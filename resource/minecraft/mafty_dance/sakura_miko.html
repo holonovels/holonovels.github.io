@@ -19,15 +19,6 @@
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:image" content="https://holonovels.github.io/resource/minecraft/mafty_dance/sakura_miko_ogp_tw1200x630.jpg">
 		<link rel="canonical" href="https://holonovels.github.io/resource/minecraft/mafty_dance/sakura_miko.html">
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-50HQ58Q4E2"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'G-50HQ58Q4E2');
-		</script>
 		<script src="config.js"></script>
 		<title>さくらみこ - マインクラフト - マフティーダンス</title>
 	</head>
@@ -62,7 +53,8 @@
 			let canvasSizeH = Number( window.getComputedStyle( document.getElementById( 'webgl' ) ).width.replace( /[^0-9]/g, '' ) ) * 540 / 960;
 			// ステレオ表示に関する変数
 			let stereoSwitch = 0;
-			let radius = 3.4;// カメラ距離
+			//let radius = 3.4;// カメラ距離
+			let radius = 4.2;// カメラ距離
 			let phiRadian = 90 * Math.PI / 180;
 			let thetaRadian = 90 * Math.PI / 180;
 			let vector3 = new THREE.Vector3();
@@ -132,7 +124,8 @@
 				scene.add( new THREE.AmbientLight( 0xffffff, 0.6 ) );
 				light = new THREE.DirectionalLight( 0xffe2b9, 0.6 );
 				light.castShadow = true;
-				light.position.copy( new THREE.Vector3( 6, 6, 10 ) );
+				//light.position.copy( new THREE.Vector3( 6, 6, 10 ) );
+				light.position.copy( new THREE.Vector3( 3, 2, 6 ) );
 				light.shadow.mapSize.copy( new THREE.Vector2 ( Math.pow( 2, 10 ), Math.pow( 2, 10 ) ) );
 				light.shadow.focus = 1;
 				light.shadow.normalBias = 0.02;
