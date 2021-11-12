@@ -8,6 +8,8 @@
 	'../../assets/js/ammo.js',
 	'../../assets/js/CCDIKSolver.js',
 	'../../assets/js/MMDPhysics.js',
-	'../../assets/js/MMDAnimationHelper.js'
+	'../../assets/js/MMDAnimationHelper.js',
+	'../../assets/js/jquery.min.js',
+	'script.js'
 ]);
 

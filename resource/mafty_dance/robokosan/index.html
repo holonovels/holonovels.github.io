@@ -25,23 +25,47 @@
 </head>
 
 <body>
+<!-- Header -->
+<header>
+<ul>
+<li><a  id="play"href="javascript:/* マフティーダンス */">マフティーダンス</a></li>
+<li><a id="save_webm" href="javascript:/* WebM動画保存 */">WebM動画保存</a></li>
+<li><a id="pause" href="javascript:/* 一時停止 */">一時停止</a></li>
+<li><a id="save_png" href="javascript:/* PNG画像保存 */">PNG画像保存</a></li>
+<li><a id="morph_open" href="javascript:/* 表情 */">表情</a></li>
+<!--<li><a id="pose_open" href="javascript:/* ポーズ */">ポーズ</a></li>-->
+</ul>
+<p></p>
+</header>
+<!-- /Header -->
+
 <!-- MMDが描画されるHTML要素(widthの値から自動的に16:9で計算) -->
 <div id="webgl" style="width: 1200px;"></div>
 
-<h3>コントロール</h3>
-<form name="control">
-<!-- モーションの開始/一時停止ボタン -->
-<button type="button" name="button_motion">マフティーダンス</button>
-<!-- WebM動画保存ボタン -->
-<button type="button" name="button_webm">WebM動画保存</button>
-<!-- 一時停止ボタン -->
-<button type="button" name="button_pause">一時停止</button>
-<!-- PNG画像保存ボタン -->
-<button type="button" name="button_png">PNG画像保存</button>
-</form>
 
+<div id="morph">
+<div class="modal_bg modal_close"></div>
+<div class="modal_content">
 <h3>表情</h3>
-<form name="morph"></form>
+<hr>
+<ul>
+</ul>
+<hr>
+<a class="modal_close" href="">閉じる</a>
+</div>
+</div>
+
+<div id="pose">
+<div class="modal_bg modal_close"></div>
+<div class="modal_content">
+<h3>ポーズ</h3>
+<hr>
+<ul>
+</ul>
+<hr>
+<a class="modal_close" href="">閉じる</a>
+</div>
+</div>
 
 <script>
 //***********************************************************************************************
@@ -211,59 +235,48 @@ function loadMMD () {
 			let count = 0;
 			// innerHTMLはHTMLを都度解釈するため、タグが補完されてしまうので、タグが補完されないよう一度変数に入れ、最後にまとめてinnerHTMLに渡す
 			let htmlSource = '';
-			// テーブル要素の追加（開始タグ）
-			// <table style="max-width: 960px; text-align: center; width: 100%;">
-			// <tr>
-			htmlSource += '<table>\u000A';
-			htmlSource += '<tr>\u000A';
+
 			// メッシュ内のMorph Target Dictionaryに登録されているMorph（表情）を取得、ボタンにする
 			// morphTargetDictionaryのキーがMorph Target Name、値がmorphTargetInfluences配列のインデックス
 			// (Property) .morphTargetDictionary : Object
 			for ( const KEY in mesh.morphTargetDictionary ) {
 				// ボタンを追加
-				// <td style="max-width: 160px; width: 16.7%;"><button type="button" value="****" style="max-width: 128px; width: 80%;">****</button></td>
-				htmlSource += '<td><button type=\u0022button\u0022 value=\u0022' + mesh.morphTargetDictionary[ KEY ] + '\u0022>' + KEY + ' ( ' + mesh.morphTargetDictionary[ KEY ] + ' )' + '</button></td>\u000A';
+				htmlSource += '<li><a id="morph' + mesh.morphTargetDictionary[ KEY ] + '" ';
+				htmlSource += 'href="javascript:/* ' + KEY + ' */" ';
+				htmlSource += 'rel="' + mesh.morphTargetDictionary[ KEY ] + '"'
+				htmlSource += '>'
+				htmlSource += mesh.morphTargetDictionary[ KEY ]
+				htmlSource += KEY + ' ( ' + mesh.morphTargetDictionary[ KEY ] + ' )';
+				htmlSource += '</a></li>'
 
-				// 6列ごとに改行
-				if ( count % 6 === 5 ) {
-					// </tr>
-					htmlSource += '</tr>\u000A';
-					// <tr>
-					htmlSource += '<tr>\u000A';
-				}
 				// カウントを加算
 				count ++;
 			}
 
-
-			// 最後の行も6列となるように空白セルで埋める
-			if ( count % 6 !== 5 ) {
-				for ( let i = 6 - count % 6; i < 6; i ++ ) {
-					// <td style="max-width: 160px; width: 16.7%;"></td>
-					htmlSource += '<td></td>\u000A';
-				}
-			}
-			// テーブル要素の追加（終了タグ）
-			// </tr>
-			// </table>
-			htmlSource += '</tr>\u000A';
-			htmlSource += '</table>\u000A';
 			// 最後にまとめてinnerHTMLに渡す
-			document.morph.innerHTML = htmlSource;
+			$('#morph ul').html(htmlSource);
 
 			// 追加したボタンにイベントを登録
-			for ( let i = 0; i < document.morph.elements.length; i ++ ) {
-				document.morph.elements[ i ].onclick = async function() {
-					// morphTargetInfluencesの値を指定することで、Morph（表情）をつける
-					// (Property) .morphTargetInfluences : Array
-					mesh.morphTargetInfluences[ premorph ] = 0;// 前回のMorph（表情）を戻す
-					mesh.morphTargetInfluences[ Number( document.morph.elements[ i ].value ) ] = 1;
-					premorph = document.morph.elements[ i ].value;// Morph（表情）を保存
-				};
-			}
+			$('#morph li a').each(function(index) {
+
+				let rel = $(this).attr("rel");
+				(function() {
+					$("#morph"+rel).on('click', function(){
+						// morphTargetInfluencesの値を指定することで、Morph（表情）をつける
+						// (Property) .morphTargetInfluences : Array
+						mesh.morphTargetInfluences[ premorph ] = 0;// 前回のMorph（表情）を戻す
+						mesh.morphTargetInfluences[rel] = 1;
+						premorph = rel;// Morph（表情）を保存
+					});
+				})();
+			});
 
 			// ランダムまばたき開始
 			blink(mesh);
+
+			// サイズを表示
+			$("header>p").html("(WxH:"+canvasSizeW+"x"+canvasSizeH+")");
+
 		}
 	);
 }
@@ -330,7 +343,7 @@ window.addEventListener( 'resize', function () {
 //-----------------------------------------------------------------------------------------------
 // 一時停止ボタン
 //-----------------------------------------------------------------------------------------------
-document.control.button_pause.addEventListener( 'click', function () {
+$('#pause').on('click',function(){
 	 // モーションの開始
 	if ( motionIndex === 0 && animationMixer.clipAction( motions[0] ).paused === false ) {
 		// モーションの一時停止
@@ -340,17 +353,19 @@ document.control.button_pause.addEventListener( 'click', function () {
 		// モーションの一時停止から再開
 		animationMixer.clipAction( motions[0] ).paused = false;
 	}
-}, false );
+	return false;
+});
 
 //-----------------------------------------------------------------------------------------------
 // モーションの開始
 //-----------------------------------------------------------------------------------------------
-document.control.button_motion.addEventListener( 'click', function () {
+$('#play').on('click',function(){
 	animationMixer.clipAction( motions[0] ).reset();
 	animationMixer.clipAction( motions[0] ).play();
 	animationMixer.clipAction( motions[0] ).setLoop( THREE.LoopOnce );
 	motionIndex = 0;
-}, false );
+	return false;
+});
 
 //-----------------------------------------------------------------------------------------------
 // 画面上でのドラッグの開始/終了
@@ -475,7 +490,7 @@ document.getElementById( 'webgl' ).addEventListener( 'touchmove', function ( eve
 //-----------------------------------------------------------------------------------------------
 // PNG画像保存ボタン
 //-----------------------------------------------------------------------------------------------
-document.control.button_png.addEventListener( 'click', function () {
+$('#save_png').on('click',function(){
 	renderer.domElement.getContext( 'webgl2', { antialias: true, preserveDrawingBuffer: true } );
 	camera.position.copy( vector11 );
 	camera.lookAt( vector12 );
@@ -489,14 +504,16 @@ document.control.button_png.addEventListener( 'click', function () {
 		URL.revokeObjectURL( BLOB_URL );
 	}, 'image/png' );
 	renderer.domElement.getContext( 'webgl2', { antialias: true, preserveDrawingBuffer: false } );
-}, false );
+
+	return false;
+});
 
 //-----------------------------------------------------------------------------------------------
 // イベント WebM動画保存ボタン
 //-----------------------------------------------------------------------------------------------
-document.control.button_webm.addEventListener( 'click', function () {
+$('#save_webm').on('click',function(){
 	if ( isRecording === false ) {
-		document.control.button_webm.innerHTML = '録画停止';
+		$('#save_webm').html('録画停止');
 		isRecording = true;
 		const MEDIA_STREAM = renderer.domElement.captureStream( 24 );
 		mediaRecorder = new MediaRecorder( MEDIA_STREAM, { mimeType: 'video/webm; codecs=vp8' } );
@@ -520,13 +537,14 @@ document.control.button_webm.addEventListener( 'click', function () {
 		motionIndex = 0;
 
 	} else if ( isRecording === true ) {
-		document.control.button_webm.innerHTML = 'WebM動画録画';
+		$('#save_webm').html('WebM動画録画');
 		isRecording = false;
 		mediaRecorder.stop();
 
 		animationMixer.clipAction( motions[0] ).stop();
 	}
-}, false );
+	return false;
+});
 
 //***********************************************************************************************
 // ライブラリー
