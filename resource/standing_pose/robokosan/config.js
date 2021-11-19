@@ -12,7 +12,7 @@ var canvasSizeW = Number( window.getComputedStyle( document.getElementById( 'web
 var canvasSizeH = Number( window.getComputedStyle( document.getElementById( 'webgl' ) ).width.replace( /[^0-9]/g, '' ) ) * 540 / 960;
 // ステレオ表示に関する変数
 var stereoSwitch = 0;
-var radius = 4.2;// カメラ距離
+var radius = 3.2;// カメラ距離
 var phiRadian = 90 * Math.PI / 180;
 var thetaRadian = 90 * Math.PI / 180;
 var vector11 = {};
@@ -42,10 +42,12 @@ var mabatakiIndex = 0;
 var poseIndex = -1;
 var video_bits = 5120;// 録画画像のビットレート、キロバイト
 var video_time = 60000;// マイクロ秒
+var blink_on = true;// まばたき
+var physics_on = true;// 物理演算
 
 const filename = 'standing_pose_robokosan';
 // 読み込むMMD 3Dモデルのファイル(PMXファイル)をオブジェクトで管理する
-const PMX_FILE = { name: 'ロボ子さん', file: '../../assets/models/robokosan/hoodie_normal_gundam.pmx', emissive: 0.3, multiply: 0.0739, physics: true, receiveShadow: true, thickness: 0.001 };
+const PMX_FILE = { name: 'ロボ子さん', file: '../../assets/models/robokosan/hoodie_normal_gundam.pmx', emissive: 0.3, multiply: 0.0739, physics: physics_on, receiveShadow: true, thickness: 0.001 };
 // 読み込むモーションファイル(VMDファイル)をオブジェクトで管理する
 const VMD_FILES = [ 
 	{ name: 'じぶん3-1',  file: '../../assets/poses/jibun/3/1.vmd' }, 

@@ -435,10 +435,11 @@ $('#save_webm').on('click',function(){
 
 		let media_param = {};
 		let userAgent = window.navigator.userAgent;
-		if(userAgent.indexOf('chrome') != -1 && userAgent.indexOf('safari') != -1) {
+		if(userAgent.indexOf('Chrome') != -1 || userAgent.indexOf('Safari') != -1) {
 			// h264はchrome safariのみ
 			media_param = {mimeType:'video/webm;codecs=h264', videoBitsPerSecond:video_bits*1000};
-		} else if(userAgent.indexOf('firefox') != -1) {
+		} else if(userAgent.indexOf('Firefox') != -1) {
+			console.log("vp8");
 			media_param = {mimeType:'video/webm;codecs=vp8', videoBitsPerSecond:video_bits*1000};
 		} else {
 			media_param = {mimeType:'video/webm', videoBitsPerSecond:video_bits*1000};

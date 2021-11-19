@@ -36,6 +36,19 @@ $(function () {
 		$('#pose').fadeOut();
 		return false;
 	});
+
+	if(blink_on)$('#blink_on').prop('checked', true);
+	$('#blink_on').change(function() {
+		if ($(this).prop('checked')) blink_on = true;
+		else blink_on = false;
+	});
+
+	if(physics_on)$('#physics_on').prop('checked', true);
+	$('#physics_on').change(function() {
+		if ($(this).prop('checked')) physics_on = true;
+		else physics_on = false;
+	});
+
 //------------------------------------------------------------------------------
 	// Ammo の 「Ammo.btDefaultCollisionConfiguration is not a function」 のエラー回避
 	Ammo().then( function ( AmmoLib ) {
@@ -325,6 +338,8 @@ function loadMMD () {
 			// ランダムまばたき開始
 			blink(mesh, mabatakiIndex);
 
+
+
 			// サイズを表示
 			$("header>p").html("(WxH:"+canvasSizeW+"x"+canvasSizeH+")");
 
@@ -353,11 +368,14 @@ function sceneRender() {
 // ランダムまばたき
 //-----------------------------------------------------------------------------------------------
 async function blink(mesh, idx) {
-	mesh.morphTargetInfluences[idx] = 1;// まばたき
-	await sleep(0.05);
-	mesh.morphTargetInfluences[idx] = 0;
+	if(blink_on){
+		mesh.morphTargetInfluences[idx] = 1;// まばたき
+		await sleep(0.05);
+		mesh.morphTargetInfluences[idx] = 0;
+	}
 	setTimeout(blink, Math.floor(Math.random()*11000), mesh, idx);
 }
+
 
 //***********************************************************************************************
 // ライブラリー
@@ -561,10 +579,11 @@ $('#save_webm').on('click',function(){
 
 		let media_param = {};
 		let userAgent = window.navigator.userAgent;
-		if(userAgent.indexOf('chrome') != -1 && userAgent.indexOf('safari') != -1) {
+		if(userAgent.indexOf('Chrome') != -1 || userAgent.indexOf('Safari') != -1) {
 			// h264はchrome safariのみ
 			media_param = {mimeType:'video/webm;codecs=h264', videoBitsPerSecond:video_bits*1000};
-		} else if(userAgent.indexOf('firefox') != -1) {
+		} else if(userAgent.indexOf('Firefox') != -1) {
+			console.log("vp8");
 			media_param = {mimeType:'video/webm;codecs=vp8', videoBitsPerSecond:video_bits*1000};
 		} else {
 			media_param = {mimeType:'video/webm', videoBitsPerSecond:video_bits*1000};
