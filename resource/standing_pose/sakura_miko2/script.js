@@ -542,11 +542,7 @@ document.getElementById( 'webgl' ).addEventListener( 'touchmove', function ( eve
 // PNG画像保存ボタン
 //-----------------------------------------------------------------------------------------------
 $('#save_png').on('click',function(){
-	//scene.remove( mesh );
 
-	//ANIMATION_HELPER.remove( mesh );
-
-/*
 	renderer.domElement.getContext( 'webgl2', { antialias: true, preserveDrawingBuffer: true } );
 	camera.position.copy( vector11 );
 	camera.lookAt( vector12 );
@@ -561,7 +557,7 @@ $('#save_png').on('click',function(){
 		URL.revokeObjectURL( BLOB_URL );
 	}, 'image/png' );
 	renderer.domElement.getContext( 'webgl2', { antialias: true, preserveDrawingBuffer: false } );
-*/
+
 	return false;
 });
 
@@ -570,6 +566,8 @@ $('#save_png').on('click',function(){
 //-----------------------------------------------------------------------------------------------
 $('#save_webm').on('click',function(){
 	if ( isRecording === false ) {
+		if(motionIndex==-1)motionIndex=0;
+
 		$('#save_webm').html('録画停止');
 		isRecording = true;
 		renderer.setClearAlpha(1.0);
@@ -581,7 +579,6 @@ $('#save_webm').on('click',function(){
 			// h264はchrome safariのみ
 			media_param = {mimeType:'video/webm;codecs=h264', videoBitsPerSecond:video_bits*1000};
 		} else if(userAgent.indexOf('Firefox') != -1) {
-			console.log("vp8");
 			media_param = {mimeType:'video/webm;codecs=vp8', videoBitsPerSecond:video_bits*1000};
 		} else {
 			media_param = {mimeType:'video/webm', videoBitsPerSecond:video_bits*1000};
@@ -610,10 +607,15 @@ $('#save_webm').on('click',function(){
 			URL.revokeObjectURL( BLOB_URL );
 		};
 
+		animationMixer.clipAction( motions[motionIndex] ).reset();
+		animationMixer.clipAction( motions[motionIndex] ).play();
+		animationMixer.clipAction( motions[motionIndex] ).setLoop( THREE.LoopOnce );
+		motionIndex = motionIndex;
 
 	} else if ( isRecording === true ) {
 		$('#save_webm').html('WebM動画録画');
 		isRecording = false;
+		mediaRecorder.stop();
 		animationMixer.clipAction( motions[motionIndex] ).stop();
 		renderer.setClearAlpha(0.0);
 	}
