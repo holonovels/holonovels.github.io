@@ -47,6 +47,8 @@ $(function () {
 	$('#physics_on').change(function() {
 		if ($(this).prop('checked')) physics_on = true;
 		else physics_on = false;
+
+		ANIMATION_HELPER.enable( 'physics', physics_on ); 
 	});
 //------------------------------------------------------------------------------
 	// Ammo の 「Ammo.btDefaultCollisionConfiguration is not a function」 のエラー回避
@@ -141,6 +143,8 @@ function loadMMD () {
 				} );
 			}
 			// オブジェクトで管理しているMMD 3Dモデルのファイル(PMXファイル)の物理演算のプロパティーを使用 物理演算あり(true) / 物理演算なし(false) 
+			ANIMATION_HELPER.add( mesh, { animation: motions } );
+/*
 			if ( PMX_FILE.physics ) {
 				// (Constructor) MMDAnimationHelper( params : Object )
 				// (Method) .add ( object : Object3D, params : Object ) : MMDAnimationHelper
@@ -148,13 +152,17 @@ function loadMMD () {
 			} else {
 				ANIMATION_HELPER.add( mesh, { animation: motions, physics: false } );
 			}
+*/
 			// 再生、停止、一時停止を制御するための AnimationMixer を取得
 			// (Property) .objects : WeakMap
 			animationMixer = ANIMATION_HELPER.objects.get( mesh ).mixer;
 			// AnimationHelperにより開始したモーションを停止する
 			// (Method) .stopAllAction () : AnimationMixer
 			animationMixer.stopAllAction();
+
+			ANIMATION_HELPER.enable( 'physics', physics_on ); 
 			scene.add( mesh );
+
 
 			//------------------------------------------------------------------
 			let htmlSource = '';
@@ -320,6 +328,8 @@ function loadMMD () {
 
 			// サイズを表示
 			$("header>p").html("(WxH:"+canvasSizeW+"x"+canvasSizeH+")");
+
+
 
 		}
 	);
@@ -532,6 +542,11 @@ document.getElementById( 'webgl' ).addEventListener( 'touchmove', function ( eve
 // PNG画像保存ボタン
 //-----------------------------------------------------------------------------------------------
 $('#save_png').on('click',function(){
+	//scene.remove( mesh );
+
+	//ANIMATION_HELPER.remove( mesh );
+
+/*
 	renderer.domElement.getContext( 'webgl2', { antialias: true, preserveDrawingBuffer: true } );
 	camera.position.copy( vector11 );
 	camera.lookAt( vector12 );
@@ -546,7 +561,7 @@ $('#save_png').on('click',function(){
 		URL.revokeObjectURL( BLOB_URL );
 	}, 'image/png' );
 	renderer.domElement.getContext( 'webgl2', { antialias: true, preserveDrawingBuffer: false } );
-
+*/
 	return false;
 });
 
