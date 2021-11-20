@@ -8,8 +8,10 @@ var light = {};
 var mesh = {};
 var renderer = {};
 var scene = {};
-var canvasSizeW = Number( window.getComputedStyle( document.getElementById( 'webgl' ) ).width.replace( /[^0-9]/g, '' ) );
-var canvasSizeH = Number( window.getComputedStyle( document.getElementById( 'webgl' ) ).width.replace( /[^0-9]/g, '' ) ) * 540 / 960;
+//var canvasSizeW = Number( window.getComputedStyle( document.getElementById( 'webgl' ) ).width.replace( /[^0-9]/g, '' ) );
+//var canvasSizeH = Number( window.getComputedStyle( document.getElementById( 'webgl' ) ).width.replace( /[^0-9]/g, '' ) ) * 540 / 960;
+var canvasSizeW = 2500;
+var canvasSizeH = 4500;
 // ステレオ表示に関する変数
 var stereoSwitch = 0;
 var radius = 3.2;// カメラ距離
