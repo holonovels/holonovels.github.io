@@ -53,6 +53,6 @@ However, at present, it is scary to distribute the execution EXE, so I try to re
 # Author
 
 * xbmc_now
-* @xbmc_now
+* [@xbmc_now](https://twitter.com/xbmc_now)
 
 # License
