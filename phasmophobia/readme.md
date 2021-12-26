@@ -8,7 +8,7 @@ Phasmophobia Hololive Texture Mod
 ![MediumTruck01](src/MediumTruck01-sharedassets1.assets-316.jpg)
 ![system_case_Emitter](src/system_case_Emitter-sharedassets2.assets-1215.jpg)
 ![Whiteboard_ao](src/Whiteboard_ao-sharedassets1.assets-352.jpg)
-![Gadgets_e signal](src/Gadgets_e+signal-sharedassets2.assets-525.jpg)
+![Gadgets_e signal](src/Gadgets_e%20signal-sharedassets2.assets-525.jpg)
 
 # Features
 
