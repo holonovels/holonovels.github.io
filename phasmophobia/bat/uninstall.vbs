@@ -7,8 +7,14 @@ On Error Resume Next
 Dim Conf
 Set Conf = CreateObject("Scripting.Dictionary")
 '#-- [ 基本設定 ] --------------------------------------------------------------
+' PhasmophobiaアプリID
+Call Conf.Add("APPID", "739630")
 ' Phasmophobiaレジストリキー
-Call Conf.Add("REG_KEY", "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 739630\InstallLocation")
+Call Conf.Add("REG_KEY", "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App " & Conf("APPID") & "\InstallLocation")
+' Phasmophobiaマニフェストファイル
+Call Conf.Add("ACF_FILE", "appmanifest_" & Conf("APPID") & ".acf")
+' PhasmophobiaビルドID
+Call Conf.Add("BUILDID", "7935572")
 
 ' 日本語表示
 If GetLocale() = 1041 Then Call Conf.Add("JA", true) Else Call Conf.Add("JA", false)
@@ -17,6 +23,7 @@ If GetLocale() = 1041 Then Call Conf.Add("JA", true) Else Call Conf.Add("JA", fa
 Call Conf.Add("M_TITLE", "# Phasmophobia Hololive Texture Mod v1.0.0")
 If Conf("JA") Then Call Conf.Add("M_START", "何かキーを押すとアンインストールします") Else Call Conf.Add("M_EXIT", "Press any key to uninstall")
 If Conf("JA") Then Call Conf.Add("M_NOT_FOUND", "Phasmophobiaが見つかりませんでした。") Else Call Conf.Add("M_NOT_FOUND", "Phasmophobia not found")
+If Conf("JA") Then Call Conf.Add("M_NOT_BUILDID", "対応バージョンではありません。") Else Call Conf.Add("M_NOT_BUILDID", "Not a supported version.")
 If Conf("JA") Then Call Conf.Add("M_SKIP", "バックアップファイルが存在しないのでスキップします。") Else Call Conf.Add("M_SKIP", "The backup file does not exist, so skip it.")
 If Conf("JA") Then Call Conf.Add("M_ERROR", "エラーが発生しました。") Else Call Conf.Add("M_ERROR", "ERROR")
 If Conf("JA") Then Call Conf.Add("M_ERR_NUM", "エラー番号：") Else Call Conf.Add("M_ERR_NUM", "ERR NUM:")
@@ -89,6 +96,27 @@ Function Main()
 	inp = WScript.StdIn.ReadLine
 
 	Call Conf.Add("DATA_PATH", wsh.RegRead(Conf("REG_KEY")) & "\Phasmophobia_Data\")
+
+	' マニフェストを読む
+	Dim sr, re, m
+	Set sr = CreateObject("ADODB.Stream")
+	sr.type = 2: sr.charset = "UTF-8"
+	sr.Open
+	sr.LoadFromFile Conf("DATA_PATH") & "..\..\..\" & Conf("ACF_FILE")
+	Set re = New RegExp' 正規表現
+	re.Pattern = "\t*""(buildid)""\t+""(.+)""": re.Global = True
+	Do While sr.EOS = False
+		Set m = re.Execute(sr.ReadText(-2))
+		If m.Count > 0 Then 
+			If m(0).SubMatches(1) <> Conf("BUILDID") Then
+				WScript.Echo Conf("M_NOT_BUILDID")
+				Exit Function
+			End If
+			Exit Do
+		End If
+	Loop
+	sr.Close
+	If Not sr Is Nothing Then Set sr = Nothing
 
 	Dim f
 	For Each f In Conf("ASSETS")
