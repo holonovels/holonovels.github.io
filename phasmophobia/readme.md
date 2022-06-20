@@ -12,7 +12,7 @@ Phasmophobia Hololive Texture Mod
 
 # Features
 
-Phasmophobia‚ÌƒeƒNƒXƒ`ƒƒ[ƒtƒ@ƒCƒ‹‚ğƒzƒƒ‰ƒCƒud—l‚É•ÏX‚µ‚Ü‚·B  
+Phasmophobiaã®ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ›ãƒ­ãƒ©ã‚¤ãƒ–ä»•æ§˜ã«å¤‰æ›´ã—ã¾ã™ã€‚  
 Change the texture file of Phasmophobia to the hololive specification.  
 
 # Requirement
@@ -21,19 +21,19 @@ Change the texture file of Phasmophobia to the hololive specification.
 
 # Installation
 
-‚Ü‚¸Phasmophobia‚Ìƒo[ƒWƒ‡ƒ“‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢BPhasmophobia‚Í•p”É‚ÉƒAƒbƒvƒf[ƒg‚ªs‚í‚ê‚éƒQ[ƒ€‚Å‚·B  
-ƒAƒbƒvƒf[ƒg‚ªs‚í‚êAƒeƒNƒXƒ`ƒƒ[ƒtƒ@ƒCƒ‹‚Ìƒo[ƒWƒ‡ƒ“‚ªˆá‚¤‚ÆPhasmophobia‚Í‹­§I—¹‚µ‚Ä‚µ‚Ü‚¢‚Ü‚·B  
-ƒo[ƒWƒ‡ƒ“‚ªÅV”Å‚ÆˆÙ‚È‚éê‡‚ÍA‘Î‰‚·‚é‚Ü‚Å‘Ò‚Á‚Ä‚­‚¾‚³‚¢B  
+ã¾ãšPhasmophobiaã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚Phasmophobiaã¯é »ç¹ã«ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆãŒè¡Œã‚ã‚Œã‚‹ã‚²ãƒ¼ãƒ ã§ã™ã€‚  
+ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆãŒè¡Œã‚ã‚Œã€ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãŒé•ã†ã¨Phasmophobiaã¯å¼·åˆ¶çµ‚äº†ã—ã¦ã—ã¾ã„ã¾ã™ã€‚  
+ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãŒæœ€æ–°ç‰ˆã¨ç•°ãªã‚‹å ´åˆã¯ã€å¯¾å¿œã™ã‚‹ã¾ã§å¾…ã£ã¦ãã ã•ã„ã€‚  
 First check the version of Phasmophobia. Phasmophobia is a game that is updated frequently.  
 Phasmophobia will be killed if it is updated and the version of the texture file is different.  
 If the version is different from the latest version, please wait until it is supported.  
 
-batƒtƒHƒ‹ƒ_‚ğƒ_ƒEƒ“ƒ[ƒh‚µ‚ÄA‚»‚Ì’†‚É‚ ‚éinstall.vbs‚ğƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B  
-ƒAƒ“ƒCƒ“ƒX[ƒ‹‚Íuninstall.vbs‚ğƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B  
+batãƒ•ã‚©ãƒ«ãƒ€ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦ã€ãã®ä¸­ã«ã‚ã‚‹install.vbsã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚  
+ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒ¼ãƒ«ã¯uninstall.vbsã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚  
 Download the bat folder and double-click install.vbs in it.  
 Double-click uninstall.vbs to uninstall.  
 
-steamƒNƒ‰ƒCƒAƒ“ƒg‚ÌPhasmophobia‚ÌƒvƒƒpƒeƒB‚ğŠJ‚«AuƒQ[ƒ€ƒtƒ@ƒCƒ‹‚Ì®‡«‚ğŠm”Fv‚ğƒNƒŠƒbƒN‚·‚é‚±‚Æ‚Å‚àA³‹K‚Ìó‘Ô‚É–ß‚·‚±‚Æ‚ª‚Å‚«‚Ü‚·B  
+steamã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®Phasmophobiaã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’é–‹ãã€ã€Œã‚²ãƒ¼ãƒ ãƒ•ã‚¡ã‚¤ãƒ«ã®æ•´åˆæ€§ã‚’ç¢ºèªã€ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã“ã¨ã§ã‚‚ã€æ­£è¦ã®çŠ¶æ…‹ã«æˆ»ã™ã“ã¨ãŒã§ãã¾ã™ã€‚  
 You can also return to the normal state by opening the properties of Phasmophobia on the steam client and clicking "Check game file integrity".  
 ![repair](src/repair.jpg)
 
@@ -41,13 +41,13 @@ You can also return to the normal state by opening the properties of Phasmophobi
 
 # Note
 
-©•ª‚ÌŠÂ‹«‚Å‚µ‚©‚µ‚Ä‚¨‚è‚Ü‚¹‚ñB©ŒÈÓ”C‚Å‚¨Šè‚¢‚µ‚Ü‚·B  
-“®ì‚µ‚½A“®ì‚µ‚È‚©‚Á‚½“™A˜A—‚¢‚½‚¾‚¯‚é‚Æ•‚©‚è‚Ü‚·B  
+è‡ªåˆ†ã®ç’°å¢ƒã§ã—ã‹è©¦ã—ã¦ãŠã‚Šã¾ã›ã‚“ã€‚è‡ªå·±è²¬ä»»ã§ãŠé¡˜ã„ã—ã¾ã™ã€‚  
+å‹•ä½œã—ãŸã€å‹•ä½œã—ãªã‹ã£ãŸç­‰ã€é€£çµ¡ã„ãŸã ã‘ã‚‹ã¨åŠ©ã‹ã‚Šã¾ã™ã€‚  
 I have only tried it in my environment. Please take responsibility for your actions.  
 It would be helpful if you could contact us if it worked or did not work.  
 
-UABE(Unity Assets Bundle Extractor)‚Æ‚¢‚¤ƒc[ƒ‹‚Å•ÒW‚µ‚Ä‚¢‚Ü‚·‚ªAÀ‚Í‚±‚Ìƒc[ƒ‹‚ÅƒeƒNƒXƒ`ƒƒ[‚ğ•ÏX‚·‚éÀsEXE‚à¶¬‚Å‚«‚Ü‚·B  
-‚½‚¾Œ»ó‚ÍÀsEXE‚ğ”z•z‚·‚é‚Ì‚Í•|‚¢‚Ì‚ÅAƒtƒ@ƒCƒ‹‚ğ’u‚«Š·‚¦‚é‚æ‚¤‚É‚µ‚Ä‚¢‚Ü‚·B  
+UABE(Unity Assets Bundle Extractor)ã¨ã„ã†ãƒ„ãƒ¼ãƒ«ã§ç·¨é›†ã—ã¦ã„ã¾ã™ãŒã€å®Ÿã¯ã“ã®ãƒ„ãƒ¼ãƒ«ã§ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼ã‚’å¤‰æ›´ã™ã‚‹å®Ÿè¡ŒEXEã‚‚ç”Ÿæˆã§ãã¾ã™ã€‚  
+ãŸã ç¾çŠ¶ã¯å®Ÿè¡ŒEXEã‚’é…å¸ƒã™ã‚‹ã®ã¯æ€–ã„ã®ã§ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç½®ãæ›ãˆã‚‹ã‚ˆã†ã«ã—ã¦ã„ã¾ã™ã€‚  
 I am editing with a tool called UABE (Unity Assets Bundle Extractor), but in fact, I can also generate an executable EXE that changes the texture with this tool.  
 However, at present, it is scary to distribute the execution EXE, so I try to replace the file.  
 
