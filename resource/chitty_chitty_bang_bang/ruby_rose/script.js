@@ -82,8 +82,8 @@ function prepareScene() {
 	const GROUND_MESH = new THREE.Mesh( new THREE.PlaneGeometry( 10, 10, 1, 1 ), new THREE.ShadowMaterial( { opacity: 0.25 } ) );
 	GROUND_MESH.geometry.rotateX( -90 * Math.PI / 180 );
 	GROUND_MESH.receiveShadow = true;
-	scene.add( GROUND_MESH );// 地面表示
-	scene.add( new THREE.GridHelper( 8, 20, 0x000000, 0x999999 ) );// グリッド表示
+	//scene.add( GROUND_MESH );// 地面表示
+	//scene.add( new THREE.GridHelper( 8, 20, 0x000000, 0x999999 ) );// グリッド表示
 	//scene.add( new THREE.AxesHelper( 4 ) );// 角度表示
 }
 
