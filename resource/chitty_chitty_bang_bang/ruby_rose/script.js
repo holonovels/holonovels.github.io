@@ -82,8 +82,8 @@ function prepareScene() {
 	const GROUND_MESH = new THREE.Mesh( new THREE.PlaneGeometry( 10, 10, 1, 1 ), new THREE.ShadowMaterial( { opacity: 0.25 } ) );
 	GROUND_MESH.geometry.rotateX( -90 * Math.PI / 180 );
 	GROUND_MESH.receiveShadow = true;
-	//scene.add( GROUND_MESH );// 地面表示
-	//scene.add( new THREE.GridHelper( 8, 20, 0x000000, 0x999999 ) );// グリッド表示
+	scene.add( GROUND_MESH );// 地面表示
+	scene.add( new THREE.GridHelper( 8, 20, 0x000000, 0x999999 ) );// グリッド表示
 	//scene.add( new THREE.AxesHelper( 4 ) );// 角度表示
 }
 
@@ -113,7 +113,7 @@ function loadMMD () {
 			// オブジェクトで管理しているMMD 3Dモデルのファイル(PMXファイル)の倍率のプロパティーを使用
 			mesh.scale.copy( new THREE.Vector3( 1, 1, 1 ).multiplyScalar( PMX_FILE.multiply ) );
 			const BOUNDING_BOX = new THREE.Box3().setFromObject( mesh );
-			vector3.setY( 0.5 * BOUNDING_BOX.max.y );
+			vector3.setY( 0.36 * BOUNDING_BOX.max.y );
 			light.target.position.copy( new THREE.Vector3( 0, 0.5 * BOUNDING_BOX.max.y, 0 ) );
 			// モーションファイル(VMDファイル)を読み込んで、AnimationClip(配列で管理する)を作成
 

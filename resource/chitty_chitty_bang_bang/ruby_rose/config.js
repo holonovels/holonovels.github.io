@@ -5,14 +5,14 @@ var camera = {};
 var controls = {};
 var effect = {};
 var light = {};
-var mesh = {};
+var mesh = {x:0,y:600,z:0};
 var renderer = {};
 var scene = {};
 var canvasSizeW = 1920;
 var canvasSizeH = 1080;
 // ステレオ表示に関する変数
 var stereoSwitch = 0;
-var radius = 3.2;// カメラ距離
+var radius = 4.2;// カメラ距離
 var phiRadian = 90 * Math.PI / 180;
 var thetaRadian = 90 * Math.PI / 180;
 var vector11 = {};
@@ -41,7 +41,7 @@ var mabatakiIndex = 0;
 // ポーズのインデックス、-1の時はポーズは適用されていないことを示す
 //var poseIndex = -1;
 // 読み込むMMD 3Dモデルのファイル(PMXファイル)をオブジェクトで管理するemissive:放射、thickness:厚さ
-var PMX_FILE = { name: 'ルビー・ローズ', file: '../../assets/models/ruby_rose/ruby_rose.pmx', emissive: 0.3, multiply: 0.0739, physics: true, receiveShadow: true, thickness: 0.001 };
+var PMX_FILE = { name: 'RWBYルビー・ローズ', file: '../../assets/models/ruby_rose/ruby_rose.pmx', emissive: 0.3, multiply: 0.0739, physics: true, receiveShadow: true, thickness: 0.001 };
 //const PMX_FILE = { name: 'ロボ子さん', file: '../../assets/models/ruby_rose/ruby_rose.pmx', emissive: 0.6, multiply: 0.0739, physics: true, receiveShadow: true, thickness: 0.002 };
 // 読み込むモーションファイル(VMDファイル)をオブジェクトで管理する
 var VMD_FILE = { name: 'チキチキバンバン', file: '../../assets/motions/chitty_chitty_bang_bang_sing.vmd' };
