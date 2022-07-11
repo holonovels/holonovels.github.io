@@ -11,8 +11,11 @@ var CLOCK = new THREE.Clock();
 
 $(function () {
 
+	$("#webgl").css({marginTop: "50px"});
 	$("#webgl").width(canvasSizeW);
 	$("#webgl").height(canvasSizeH);
+	resizeWindow();
+	window.addEventListener('resize', resizeWindow);
 
 	$('#morph_open').on('click',function(){
 		$('#morph').fadeIn();
@@ -113,7 +116,7 @@ function loadMMD () {
 			// オブジェクトで管理しているMMD 3Dモデルのファイル(PMXファイル)の倍率のプロパティーを使用
 			mesh.scale.copy( new THREE.Vector3( 1, 1, 1 ).multiplyScalar( PMX_FILE.multiply ) );
 			const BOUNDING_BOX = new THREE.Box3().setFromObject( mesh );
-			vector3.setY( 0.5 * BOUNDING_BOX.max.y );
+			vector3.setY( 0.46 * BOUNDING_BOX.max.y );
 			light.target.position.copy( new THREE.Vector3( 0, 0.5 * BOUNDING_BOX.max.y, 0 ) );
 			// モーションファイル(VMDファイル)を読み込んで、AnimationClip(配列で管理する)を作成
 
@@ -531,4 +534,16 @@ function sleep( second ) {
 	} );
 }
 
+resizeWindow = function (e) {
+	let cw = $(window).width();;
+	let ch = $(window).height();;
+	let cRate = cw/ch;
+	let p = 1;
 
+	if(canvasRate>cRate){
+		p = cw/canvasSizeW;// 縦長なので幅を基準に拡大縮小
+	} else {
+		p = ch/canvasSizeH;// 横長なので高さを基準に拡大縮小
+	}
+	$("#webgl").css({transformOrigin: "0 0",transform: 'scale('+p+')'});
+}

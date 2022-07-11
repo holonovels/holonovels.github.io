@@ -10,9 +10,10 @@ var renderer = {};
 var scene = {};
 var canvasSizeW = 1920;
 var canvasSizeH = 1080;
+var canvasRate = canvasSizeW/canvasSizeH;
 // ステレオ表示に関する変数
 var stereoSwitch = 0;
-var radius = 3.2;// カメラ距離
+var radius = 4.3;// カメラ距離
 var phiRadian = 90 * Math.PI / 180;
 var thetaRadian = 90 * Math.PI / 180;
 var vector11 = {};
