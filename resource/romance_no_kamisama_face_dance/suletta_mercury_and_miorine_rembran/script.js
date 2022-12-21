@@ -17,6 +17,7 @@ var CLOCK = new THREE.Clock();
 $(function () {
 
 	$("#webgl").css({marginTop: "50px"});
+	$("#webgl").css({overflow: "hidden"});
 	$("#webgl").width(canvasSizeW);
 	$("#webgl").height(canvasSizeH);
 	resizeWindow();
