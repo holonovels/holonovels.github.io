@@ -16,6 +16,7 @@ body {
 	-webkit-text-size-adjust:100%;/* 文字の大きさを固定する指定 */
 	font-size: 16px; font-size: 1.6rem;
 	color:#444444;
+	overflow: hidden;
 }
 
 html, body, table {
